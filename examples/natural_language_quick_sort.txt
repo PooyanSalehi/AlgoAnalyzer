@@ -1,0 +1,1 @@
+Quick sort picks a pivot element and partitions the array so that smaller elements come before it and larger ones after, then recursively sorts the two partitions in place. On average it runs in n log n time, but if the pivot is always the smallest or largest element it degrades to n squared. It uses little extra memory.
