@@ -1,0 +1,11 @@
+FUNCTION BubbleSort(A)
+    n <- length(A)
+    FOR i FROM 0 TO n-1 DO
+        FOR j FROM 0 TO n-i-2 DO
+            IF A[j] > A[j+1] THEN
+                swap A[j] and A[j+1]
+            END IF
+        END FOR
+    END FOR
+    RETURN A
+END FUNCTION

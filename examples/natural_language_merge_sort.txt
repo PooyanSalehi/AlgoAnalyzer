@@ -1,0 +1,1 @@
+Merge sort is a divide-and-conquer algorithm. It recursively splits the array into two halves until each piece has one element, then merges the sorted halves back together by repeatedly comparing their front elements. It always runs in n log n time and needs a temporary array of size n during merging.

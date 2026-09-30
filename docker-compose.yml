@@ -1,0 +1,45 @@
+# AlgoAnalyzer — full-stack local deployment.
+#
+#   docker compose up --build
+#     frontend  → http://localhost:3000
+#     backend   → http://localhost:8000/docs
+#     postgres  → localhost:5432 (algo/algo)
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: algo
+      POSTGRES_PASSWORD: algo
+      POSTGRES_DB: algoanalyzer
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U algo -d algoanalyzer"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://algo:algo@db:5432/algoanalyzer
+      CORS_ORIGINS: '["*"]'
+      BENCHMARK_ENABLED: "true"
+      BENCHMARK_TIMEOUT_SECONDS: "30"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  pgdata:

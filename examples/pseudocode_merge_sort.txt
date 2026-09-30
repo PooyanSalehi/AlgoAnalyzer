@@ -1,0 +1,23 @@
+FUNCTION MergeSort(A)
+    IF length(A) <= 1 THEN
+        RETURN A
+    END IF
+    mid <- length(A) / 2
+    left <- MergeSort(A[1..mid])
+    right <- MergeSort(A[mid+1..length(A)])
+    RETURN Merge(left, right)
+END FUNCTION
+
+FUNCTION Merge(L, R)
+    result <- empty array
+    WHILE L not empty AND R not empty DO
+        IF L[1] <= R[1] THEN
+            append L[1] to result, remove L[1]
+        ELSE
+            append R[1] to result, remove R[1]
+        END IF
+    END WHILE
+    append remaining elements of L to result
+    append remaining elements of R to result
+    RETURN result
+END FUNCTION

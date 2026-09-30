@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-canvas text-ink antialiased;
+  background-image:
+    radial-gradient(60rem 40rem at 85% -10%, rgba(88, 166, 255, 0.07), transparent),
+    radial-gradient(50rem 30rem at 0% 110%, rgba(188, 140, 255, 0.06), transparent);
+  background-attachment: fixed;
+}
+
+/* Thin GitHub-style scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3d444d transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #3d444d;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Markdown report typography */
+.md-body {
+  @apply text-sm leading-relaxed text-ink;
+}
+.md-body h1 {
+  @apply mb-4 mt-2 border-b border-edge pb-2 text-xl font-semibold;
+}
+.md-body h2 {
+  @apply mb-3 mt-6 border-b border-edge pb-1.5 text-base font-semibold;
+}
+.md-body h3 {
+  @apply mb-2 mt-4 text-sm font-semibold text-ink;
+}
+.md-body p {
+  @apply my-2.5;
+}
+.md-body ul {
+  @apply my-2.5 list-disc space-y-1 pl-5;
+}
+.md-body ol {
+  @apply my-2.5 list-decimal space-y-1 pl-5;
+}
+.md-body strong {
+  @apply font-semibold text-white;
+}
+.md-body code {
+  @apply rounded bg-raised px-1.5 py-0.5 font-mono text-[12px] text-algoA;
+}
+.md-body pre code {
+  @apply block overflow-x-auto p-3;
+}
+.md-body table {
+  @apply my-4 w-full border-collapse text-left text-[13px];
+}
+.md-body th {
+  @apply border border-edge bg-raised px-3 py-1.5 font-semibold;
+}
+.md-body td {
+  @apply border border-edge px-3 py-1.5;
+}
+.md-body blockquote {
+  @apply my-3 border-l-2 border-edge-bright pl-3 text-ink-muted;
+}
+.md-body hr {
+  @apply my-5 border-edge;
+}
+
+/* Monaco polish */
+.monaco-editor .margin,
+.monaco-editor-background {
+  background-color: transparent !important;
+}
